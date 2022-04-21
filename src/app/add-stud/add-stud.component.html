@@ -1,0 +1,80 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12" >
+            <div class="div" style="border: 1px solid #eeeeee; padding:10px; margin-left: 2px !important;">
+                <form [formGroup]="studform" autocomplete="off">
+                    <div class="mb-1">
+                        <label for="name" class="form-label">Name:<span style="color:red">*</span></label>
+                        <div class="input-group has-validation">
+                            <input type="text" #name [ngClass]="{'form-control': true, 'is-invalid': studform.get('name')?.invalid &&
+                            (studform.get('name')?.dirty || studform.get('name')?.touched)}" id="name" name="name"
+                                formControlName="name" placeholder="Name">
+                            <div class="invalid-feedback">
+                                This field is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-1">
+                        <label for="mobile" class="form-label">Mobile:<span style="color:red">*</span></label>
+                        <div class="input-group has-validation">
+                            <input type="number" maxlength="10" [ngClass]="{'form-control': true, 'is-invalid': studform.get('mobile')?.invalid &&
+                            (studform.get('mobile')?.dirty || studform.get('mobile')?.touched)}" id="mobile" name="mobile"
+                                formControlName="mobile" placeholder="Mobile">
+                            <div class="invalid-feedback">
+                                This field is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-1">
+                        <label for="email" class="form-label">Email:<span style="color:red">*</span></label>
+                        <div class="input-group has-validation">
+                            <input type="email" [ngClass]="{'form-control': true, 'is-invalid': studform.get('email')?.invalid &&
+                                (studform.get('email')?.dirty || studform.get('email')?.touched)}" id="email" name="email"
+                                formControlName="email" placeholder="xyz@gmail.com">
+                            <div class="invalid-feedback">
+                                {{studform.get('email')?.hasError('required') ? 'This field is required.':'Invalid Email'}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-1">
+                        <label for="DOB" class="form-label">DOB:<span style="color:red">*</span></label>
+                        <p-calendar [showIcon]="true" inputId="icon" formControlName="dob" [ngClass]="{'form-control': true, 'is-invalid': studform.get('dob')?.invalid &&
+                        (studform.get('dob')?.dirty || studform.get('dob')?.touched)}"></p-calendar>
+                    </div>
+                    <div class="mb-1">
+                        <label for="email" class="form-label">Gender:<span style="color:red">*</span></label>
+                        <div class="input-group has-validation">
+                            <select [ngClass]="{'form-select': true, 'is-invalid': studform.get('gender')?.invalid &&
+                                (studform.get('gender')?.dirty || studform.get('gender')?.touched)}"
+                                aria-label="Default select example" formControlName="gender">
+                                <option value=""> --Select--</option>
+                                <option value="Male" selected="studform.get('gender')?.value=='Male'">Male</option>
+                                <option value="Female" selected="studform.get('gender')?.value=='Female'">Female</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                This field is required.
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="mb-1">
+                        <div role="group" aria-label="Basic example">
+                            <button (click)="save()" [disabled]="studform.invalid" class="btn button-style" style="background-color:#2196F3; color:white" type="button">
+                                {{id==0 || id==null ?'Submit':'Update'}}</button>
+                            <button class="btn btn-danger button-style" type="button">Reset </button>
+                        </div>
+                    </div>
+            <!-- 
+                    <div class="mb-1">
+                        {{studform.value |json}}
+                    </div> -->
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<!-- ************************************************************************************************************* -->
+
